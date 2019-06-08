@@ -28,7 +28,7 @@
             android:textColor="@color/stl_yellow"
             android:layout_above="@+id/anchor"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="80dp"/>
 
     <Button
             android:id="@+id/power_play_button"
@@ -42,7 +42,7 @@
             android:textColor="@color/stl_yellow"
             android:layout_above="@+id/anchor"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="80dp"/>
 
     <View
             android:id="@+id/anchor"
@@ -62,7 +62,7 @@
             android:layout_marginEnd="8dp"
             android:layout_below="@+id/anchor"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="80dp"/>
 
     <Button
             android:id="@+id/placeholder"
@@ -76,7 +76,7 @@
             android:layout_marginEnd="8dp"
             android:layout_below="@+id/anchor"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="80dp"/>
 
     <Button
             android:id="@+id/stop_button"
@@ -90,5 +90,17 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"/>
 
+    <TextView
+            android:id="@+id/created_by"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/stl_white"
+            android:textSize="12sp"
+            android:text="@string/created_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 </RelativeLayout>
