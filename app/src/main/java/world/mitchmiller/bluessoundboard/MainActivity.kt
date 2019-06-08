@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var mediaPlayer: MediaPlayer
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,48 +33,60 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun winAGame() {
+        cancelIfPlaying()
         mediaPlayer = MediaPlayer.create(this, R.raw.lets_go_win_a_game)
         setupPlayCompleteListener()
-        mediaPlayer.start()
+        mediaPlayer?.start()
         stop_button.visibility = View.VISIBLE
     }
 
     private fun buffaloHead() {
+        cancelIfPlaying()
         mediaPlayer = MediaPlayer.create(this, R.raw.buffalo_head)
         setupPlayCompleteListener()
-        mediaPlayer.start()
+        mediaPlayer?.start()
         stop_button.visibility = View.VISIBLE
     }
 
     private fun powerPlay() {
+        cancelIfPlaying()
         mediaPlayer = MediaPlayer.create(this, R.raw.blues_power_play)
         setupPlayCompleteListener()
-        mediaPlayer.start()
+        mediaPlayer?.start()
         stop_button.visibility = View.VISIBLE
     }
 
     private fun playGloria() {
+        cancelIfPlaying()
         mediaPlayer = MediaPlayer.create(this, R.raw.gloria)
         setupPlayCompleteListener()
-        mediaPlayer.start()
+        mediaPlayer?.start()
         stop_button.visibility = View.VISIBLE
     }
 
     private fun playGoalHorn() {
+        cancelIfPlaying()
         mediaPlayer = MediaPlayer.create(this, R.raw.goal_horn)
         setupPlayCompleteListener()
-        mediaPlayer.start()
+        mediaPlayer?.start()
         stop_button.visibility = View.VISIBLE
     }
 
+    // Listener for hiding button after a sound completes
     private fun setupPlayCompleteListener() {
-        mediaPlayer.setOnCompletionListener {
+        mediaPlayer?.setOnCompletionListener {
             stop_button.visibility = View.GONE
         }
     }
 
+    // If a sound is already playing, then stop the media player
+    private fun cancelIfPlaying() {
+        mediaPlayer?.stop()
+    }
+
+    // Stop the media player and hide the stop button
     private fun stop() {
-        mediaPlayer.stop()
+        mediaPlayer?.stop()
         stop_button.visibility = View.GONE
     }
 
