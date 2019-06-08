@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         stop_button.setOnClickListener(this)
         play_gloria_button.setOnClickListener(this)
         power_play_button.setOnClickListener(this)
+        placeholder.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -25,12 +26,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.play_gloria_button -> playGloria()
             R.id.stop_button -> stop()
             R.id.power_play_button -> powerPlay()
-            R.id.placeholder -> placeHolder()
+            R.id.placeholder -> buffaloHead()
         }
     }
 
-    private fun placeHolder() {
-
+    private fun buffaloHead() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.buffalo_head)
+        mediaPlayer.start()
+        stop_button.visibility = View.VISIBLE
     }
 
     private fun powerPlay() {
