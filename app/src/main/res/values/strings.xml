@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Blues Soundboard</string>
+    <string name="goal_horn">GOAL HORN</string>
+    <string name="play_gloria">PLAY GLORIA!!!!!!!</string>
+    <string name="stop">STOP</string>
+    <string name="power_play">Power Play</string>
+    <string name="placeholder">Placeholder</string>
+</resources>
