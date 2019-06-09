@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         stop_button.setOnClickListener(this)
         play_gloria_button.setOnClickListener(this)
         power_play_button.setOnClickListener(this)
-        placeholder.setOnClickListener(this)
+        buffalo_head_button.setOnClickListener(this)
         win_a_game_button.setOnClickListener(this)
     }
 
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.play_gloria_button -> playGloria()
             R.id.stop_button -> stop()
             R.id.power_play_button -> powerPlay()
-            R.id.placeholder -> buffaloHead()
+            R.id.buffalo_head_button -> buffaloHead()
             R.id.win_a_game_button -> winAGame()
         }
     }
