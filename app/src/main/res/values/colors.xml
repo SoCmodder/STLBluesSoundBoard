@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">@color/stl_blue</color>
     <color name="colorPrimaryDark">@color/stl_navy</color>
+    <color name="colorPrimaryLight">@color/stl_blue_light</color>
     <color name="colorAccent">@color/stl_yellow</color>
 
 
     <color name="stl_blue">#002F87</color>
+    <color name="stl_blue_light">#002FAA</color>
     <color name="stl_yellow">#FCB514</color>
     <color name="stl_navy">#041E42</color>
     <color name="stl_white">#FFFFFF</color>

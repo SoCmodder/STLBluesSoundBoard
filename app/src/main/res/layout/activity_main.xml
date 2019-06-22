@@ -12,7 +12,7 @@
             android:layout_alignParentTop="true"
             android:src="@drawable/blues_trumpet"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:layout_marginBottom="64dp"
             android:layout_width="150dp"
             android:layout_height="150dp"/>
@@ -28,6 +28,8 @@
         <Button
                 android:id="@+id/win_a_game_button"
                 android:text="@string/win_a_game"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:textSize="20sp"
                 android:background="@drawable/button_bg"
                 android:textColor="@color/stl_yellow"
@@ -37,6 +39,8 @@
 
         <Button
                 android:id="@+id/play_gloria_button"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/play_gloria"
                 android:textSize="20sp"
                 android:background="@drawable/button_bg"
@@ -50,6 +54,7 @@
 
     <LinearLayout
             android:id="@+id/button_container_two"
+            android:layout_marginTop="32dp"
             android:weightSum="2"
             android:layout_below="@+id/button_container_one"
             android:orientation="horizontal"
@@ -58,6 +63,8 @@
 
         <Button
                 android:id="@+id/power_play_button"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/power_play"
                 android:textSize="20sp"
                 android:background="@drawable/button_bg"
@@ -68,6 +75,8 @@
 
         <Button
                 android:id="@+id/goal_horn"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/goal_horn"
                 android:background="@drawable/button_bg"
                 android:textColor="@color/stl_yellow"
@@ -80,6 +89,9 @@
 
     <Button
             android:id="@+id/buffalo_head_button"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_below="@+id/button_container_two"
             android:text="@string/buffalo_head"
             android:background="@drawable/button_bg"
