@@ -38,10 +38,10 @@
                 android:layout_height="80dp"/>
 
         <Button
-                android:id="@+id/play_gloria_button"
+                android:id="@+id/turbulence_button"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/play_gloria"
+                android:text="@string/turbulence"
                 android:textSize="20sp"
                 android:background="@drawable/button_bg"
                 android:textColor="@color/stl_yellow"
@@ -90,6 +90,7 @@
     <Button
             android:id="@+id/buffalo_head_button"
             android:layout_marginTop="32dp"
+            android:visibility="gone"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_below="@+id/button_container_two"
