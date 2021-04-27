@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="75dp">
+        android:layout_height="75dp"
+        android:background="@drawable/button_bg">
 
     <TextView
             android:id="@+id/clip_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_toStartOf="@+id/clip_image"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            tools:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginEnd="16dp"
+            android:layout_centerVertical="true"
+            android:gravity="start"
+            android:textColor="@color/stl_yellow"
+            android:textSize="20sp"
+            tools:text="TextView" />
+
+    <ImageView
+            android:id="@+id/clip_image"
+            android:contentDescription="@string/clip_image_cd"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/blues_trumpet"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="16dp"/>
+
+</RelativeLayout>
