@@ -57,10 +57,11 @@ class SoundClipListActivity: AppCompatActivity(),
         }
 
         mediaPlayer = MediaPlayer.create(this, clipId)
-        mediaPlayer?.setOnCompletionListener {}
+        mediaPlayer?.setOnCompletionListener {
+            lastPlayedClipId = 0
+        }
         mediaPlayer?.start()
         lastPlayedClipId = clipId
-        //TODO: Show Stop Button
     }
 
     private fun stopSoundClip() {
