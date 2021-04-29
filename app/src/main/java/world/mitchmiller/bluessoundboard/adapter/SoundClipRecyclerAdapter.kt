@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.sound_list_item.view.*
 import world.mitchmiller.bluessoundboard.R
 
 class SoundClipRecyclerAdapter(

@@ -14,6 +14,7 @@ class SoundClipListActivity: AppCompatActivity(),
 
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var binding: ActivitySoundClipListBinding
+    private var lastPlayedClipId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,12 +46,25 @@ class SoundClipListActivity: AppCompatActivity(),
     }
 
     private fun playSoundClip(clipId: Int) {
-        mediaPlayer = MediaPlayer.create(this, clipId)
-        mediaPlayer?.setOnCompletionListener {
-
+        if(lastPlayedClipId == clipId) {
+            stopSoundClip()
+            lastPlayedClipId = 0
+            return
         }
+
+        if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
+            stopSoundClip()
+        }
+
+        mediaPlayer = MediaPlayer.create(this, clipId)
+        mediaPlayer?.setOnCompletionListener {}
         mediaPlayer?.start()
+        lastPlayedClipId = clipId
         //TODO: Show Stop Button
+    }
+
+    private fun stopSoundClip() {
+        mediaPlayer?.stop()
     }
 
     override fun onSoundClipSelected(item: SoundClipInfo) {
