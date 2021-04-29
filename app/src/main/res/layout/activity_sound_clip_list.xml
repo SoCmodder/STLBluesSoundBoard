@@ -16,9 +16,8 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@drawable/button_bg_selected"
                 android:elevation="4dp"
-                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:titleTextColor="@color/stl_white">
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -31,14 +30,15 @@
                         android:layout_centerVertical="true"
                         android:text="@string/app_name"
                         android:textColor="@color/colorPrimary"
-                        android:textStyle="bold"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                 <SearchView
                         android:id="@+id/searchView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="4dp"
                         android:background="@drawable/button_bg"
                         android:elevation="2dp"
                         android:gravity="end"
@@ -54,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/toolbar"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
+                android:overScrollMode="always"
                 tools:listitem="@layout/sound_list_item" />
 
     </RelativeLayout>

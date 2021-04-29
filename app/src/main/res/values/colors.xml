@@ -5,10 +5,13 @@
     <color name="colorPrimaryLight">@color/stl_blue_light</color>
     <color name="colorAccent">@color/stl_yellow</color>
 
-
     <color name="stl_blue">#002F87</color>
     <color name="stl_blue_light">#002FAA</color>
     <color name="stl_yellow">#FCB514</color>
     <color name="stl_navy">#041E42</color>
     <color name="stl_white">#FFFFFF</color>
+
+    <color name="cardinal_red">#C41E3A</color>
+    <color name="cardinal_blue">#0C2340</color>
+    <color name="cardinal_yellow">#FEDB00</color>
 </resources>

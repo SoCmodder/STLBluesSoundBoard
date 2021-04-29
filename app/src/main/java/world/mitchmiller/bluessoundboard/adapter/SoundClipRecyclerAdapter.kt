@@ -4,12 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.sound_list_item.view.*
 import world.mitchmiller.bluessoundboard.R
 
 class SoundClipRecyclerAdapter(
@@ -26,10 +25,7 @@ class SoundClipRecyclerAdapter(
 
     override fun onBindViewHolder(holder: SoundClipViewHolder, position: Int) {
         val soundClipInfo = clips[position]
-        holder.bind(soundClipInfo)
-        holder.itemView.setOnClickListener {
-            listener.onSoundClipSelected(soundClipInfo)
-        }
+        holder.bind(soundClipInfo, listener)
     }
 
     override fun getItemCount(): Int = clips.size
@@ -39,8 +35,17 @@ class SoundClipRecyclerAdapter(
         private val title: TextView = itemView.findViewById(R.id.clip_title)
         private val image: ImageView = itemView.findViewById(R.id.clip_image)
 
-        fun bind(info: SoundClipInfo) {
+        fun bind(info: SoundClipInfo, listener: OnSoundClipClickListener) {
             title.text = info.title
+            itemView.setOnClickListener {
+                listener.onSoundClipSelected(info)
+                shakeImage(image)
+            }
+        }
+
+        private fun shakeImage(imageView: ImageView) {
+            val shake: Animation = AnimationUtils.loadAnimation(context, R.anim.shake)
+            imageView.startAnimation(shake)
         }
     }
 

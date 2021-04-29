@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/item_bg"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@drawable/button_bg">
+        app:cardBackgroundColor="@color/stl_blue"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
 
-    <TextView
-            android:id="@+id/clip_title"
+    <RelativeLayout
+            android:id="@+id/item_bg"
             android:layout_width="match_parent"
-            android:layout_toStartOf="@+id/clip_image"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_centerVertical="true"
-            android:gravity="start"
-            android:textColor="@color/stl_white"
-            android:textSize="20sp"
-            tools:text="TextView" />
+            android:layout_height="match_parent"
+            android:background="@drawable/button_bg">
 
-    <ImageView
-            android:id="@+id/clip_image"
-            android:contentDescription="@string/clip_image_cd"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/blues_trumpet"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="16dp"/>
+        <TextView
+                android:id="@+id/clip_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_toStartOf="@+id/clip_image"
+                android:gravity="start"
+                android:textColor="@color/cardinal_red"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="TextView" />
 
-</RelativeLayout>
+        <ImageView
+                android:id="@+id/clip_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/clip_image_cd"
+                android:padding="4dp"
+                android:src="@drawable/blues_trumpet" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

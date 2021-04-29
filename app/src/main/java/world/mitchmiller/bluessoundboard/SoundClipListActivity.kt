@@ -33,6 +33,9 @@ class SoundClipListActivity: AppCompatActivity(),
         soundClips.add(SoundClipInfo("GOAL!", R.raw.goal_horn))
         soundClips.add(SoundClipInfo("Lets Win A Game", R.raw.lets_go_win_a_game))
         soundClips.add(SoundClipInfo("Turbulence", R.raw.turbulence))
+        soundClips.add(SoundClipInfo("We're Cummin'", R.raw.yeah_were_cummin))
+        soundClips.add(SoundClipInfo("Blues Go Marching In", R.raw.blues_go_marching_in))
+        soundClips.add(SoundClipInfo("Sad Chelsea Dagger", R.raw.sad_chelsea_dagger))
 
         return soundClips
     }
