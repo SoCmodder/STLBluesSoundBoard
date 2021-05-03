@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         goal_horn.setOnClickListener(this)
         stop_button.setOnClickListener(this)
-        play_gloria_button.setOnClickListener(this)
+        turbulence_button.setOnClickListener(this)
         power_play_button.setOnClickListener(this)
         buffalo_head_button.setOnClickListener(this)
         win_a_game_button.setOnClickListener(this)
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.goal_horn -> playGoalHorn()
-            R.id.play_gloria_button -> playGloria()
+            R.id.turbulence_button -> playTurbulence()
             R.id.stop_button -> stop()
             R.id.power_play_button -> powerPlay()
             R.id.buffalo_head_button -> buffaloHead()
@@ -59,6 +59,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun playGloria() {
         cancelIfPlaying()
         mediaPlayer = MediaPlayer.create(this, R.raw.gloria)
+        setupPlayCompleteListener()
+        mediaPlayer?.start()
+        stop_button.visibility = View.VISIBLE
+    }
+
+    private fun playTurbulence() {
+        cancelIfPlaying()
+        mediaPlayer = MediaPlayer.create(this, R.raw.turbulence)
         setupPlayCompleteListener()
         mediaPlayer?.start()
         stop_button.visibility = View.VISIBLE
