@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class SoundClipButtonActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mediaPlayer: MediaPlayer? = null
 

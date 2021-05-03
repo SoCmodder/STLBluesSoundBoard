@@ -30,6 +30,12 @@ class SoundClipRecyclerAdapter(
 
     override fun getItemCount(): Int = clips.size
 
+    fun setMusicClips(c: ArrayList<SoundClipInfo>) {
+        clips.clear()
+        clips.addAll(c)
+        notifyDataSetChanged()
+    }
+
     inner class SoundClipViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val title: TextView = itemView.findViewById(R.id.clip_title)

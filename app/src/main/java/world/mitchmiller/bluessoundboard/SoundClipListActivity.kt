@@ -3,26 +3,34 @@ package world.mitchmiller.bluessoundboard
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_sound_clip_list.view.*
 import world.mitchmiller.bluessoundboard.adapter.SoundClipInfo
 import world.mitchmiller.bluessoundboard.adapter.SoundClipRecyclerAdapter
 import world.mitchmiller.bluessoundboard.databinding.ActivitySoundClipListBinding
+import java.util.*
 
-class SoundClipListActivity: AppCompatActivity(),
+class SoundClipListActivity : AppCompatActivity(),
     SoundClipRecyclerAdapter.OnSoundClipClickListener {
 
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var binding: ActivitySoundClipListBinding
     private var lastPlayedClipId: Int = 0
+    private lateinit var searchView: SearchView
+    private lateinit var recyclerAdapter: SoundClipRecyclerAdapter
+    private val allSoundClips: ArrayList<SoundClipInfo> = createSoundClipList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(
             this, R.layout.activity_sound_clip_list
         )
+        searchView = binding.toolbar.searchView
         setSupportActionBar(binding.toolbar)
         setupRecyclerView()
+        setupSearchView()
     }
 
     private fun createSoundClipList(): ArrayList<SoundClipInfo> {
@@ -43,13 +51,46 @@ class SoundClipListActivity: AppCompatActivity(),
     private fun setupRecyclerView() {
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
 
-        val adapter = SoundClipRecyclerAdapter(this, createSoundClipList(), this)
-        binding.recyclerview.adapter = adapter
-        adapter.notifyDataSetChanged()
+        recyclerAdapter = SoundClipRecyclerAdapter(this, allSoundClips, this)
+        binding.recyclerview.adapter = recyclerAdapter
+        recyclerAdapter.notifyDataSetChanged()
+    }
+
+    private fun setupSearchView() {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                recyclerAdapter.setMusicClips(filterClips(query, allSoundClips))
+                return true
+            }
+        })
+    }
+
+    private fun filterClips(
+        query: String?,
+        soundClips: ArrayList<SoundClipInfo>
+    ): ArrayList<SoundClipInfo> {
+        val filteredList: ArrayList<SoundClipInfo> = arrayListOf()
+        val lowerCaseQuery: String = query?.toLowerCase(Locale.getDefault()) ?: ""
+
+        if (lowerCaseQuery.isNotEmpty()) {
+            for (s in soundClips) {
+                if (s.title.toLowerCase(Locale.getDefault()).contains(lowerCaseQuery)) {
+                    filteredList.add(s)
+                }
+            }
+        } else {
+            return soundClips
+        }
+
+        return filteredList
     }
 
     private fun playSoundClip(clipId: Int) {
-        if(lastPlayedClipId == clipId) {
+        if (lastPlayedClipId == clipId) {
             stopSoundClip()
             lastPlayedClipId = 0
             return

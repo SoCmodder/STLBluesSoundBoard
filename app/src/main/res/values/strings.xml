@@ -10,4 +10,5 @@
     <string name="win_a_game">Win A Game</string>
     <string name="turbulence">Turbulence</string>
     <string name="clip_image_cd">clip image</string>
+    <string name="search_hint">search</string>
 </resources>
