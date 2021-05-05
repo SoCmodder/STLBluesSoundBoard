@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "world.mitchmiller.bluessoundboard"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 3
         versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

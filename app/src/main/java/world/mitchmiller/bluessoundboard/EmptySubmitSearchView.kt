@@ -1,20 +1,26 @@
 package world.mitchmiller.bluessoundboard
 
 import android.content.Context
-import android.util.AttributeSet
+import android.view.KeyEvent
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 
-class EmptySubmitSearchView(context: Context, attr: AttributeSet?, defStyleAttr: Int = 0) : SearchView(context, attr, defStyleAttr) {
+class EmptySubmitSearchView(context: Context) : SearchView(context) {
     lateinit var searchSrcTextView: SearchAutoComplete
-    lateinit var listener: OnQueryTextListener
+    private var listener: OnQueryTextListener? = null
 
-    override fun setOnQueryTextListener(listener: OnQueryTextListener) {
+    override fun setOnQueryTextListener(listener: OnQueryTextListener?) {
         super.setOnQueryTextListener(listener)
         this.listener = listener
         searchSrcTextView = this.findViewById(androidx.appcompat.R.id.search_src_text)
-        searchSrcTextView.setOnEditorActionListener { v, actionId, event ->
-            listener.onQueryTextSubmit(query.toString())
-            true
-        }
+        searchSrcTextView.setOnEditorActionListener(object : TextView.OnEditorActionListener{
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (listener != null) {
+                    listener.onQueryTextChange(query.toString())
+                }
+                return true
+            }
+
+        })
     }
 }

@@ -15,7 +15,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class SoundClipListActivity : AppCompatActivity(),
-    SoundClipRecyclerAdapter.OnSoundClipClickListener {
+    SoundClipRecyclerAdapter.OnSoundClipClickListener, SearchView.OnQueryTextListener {
 
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var binding: ActivitySoundClipListBinding
@@ -23,7 +23,6 @@ class SoundClipListActivity : AppCompatActivity(),
     private lateinit var recyclerAdapter: SoundClipRecyclerAdapter
 
     private val allSoundClips: ArrayList<SoundClipInfo> = createSoundClipList()
-    private val filteredClips: ArrayList<SoundClipInfo> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,34 +37,17 @@ class SoundClipListActivity : AppCompatActivity(),
         menuInflater.inflate(R.menu.menu_sound_clip_list, menu)
 
         val searchViewItem: MenuItem = menu.findItem(R.id.search_bar)
-        val searchView: SearchView = searchViewItem.actionView as SearchView
+        val searchView: EmptySubmitSearchView = searchViewItem.actionView as EmptySubmitSearchView
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(query: String?): Boolean {
-                if (query.isNullOrEmpty()) {
-                    recyclerAdapter.setMusicClips(allSoundClips)
-                    return false
-                }
-
-                val fClips = filterClips(query)
-                if (fClips.size > 0) {
-                    recyclerAdapter.setMusicClips(fClips)
-                }
-                return true
-            }
-        })
+        // Disable searchview for now until I can get it working
+        //searchView.setOnQueryTextListener(this)
 
         return super.onCreateOptionsMenu(menu)
     }
 
-    private fun filterClips(query: String?): ArrayList<SoundClipInfo> {
+    private fun filterClips(query: String): ArrayList<SoundClipInfo> {
         val filteredList: ArrayList<SoundClipInfo> = arrayListOf()
-        val lowerCaseQuery: String = query?.toLowerCase(Locale.getDefault()) ?: ""
+        val lowerCaseQuery: String = query.toLowerCase(Locale.getDefault()) ?: ""
 
         if (lowerCaseQuery.isNotEmpty()) {
             for (s in allSoundClips) {
@@ -127,5 +109,22 @@ class SoundClipListActivity : AppCompatActivity(),
 
     override fun onSoundClipSelected(item: SoundClipInfo) {
         playSoundClip(item.resourceId)
+    }
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(query: String): Boolean {
+        if (query.isEmpty()) {
+            recyclerAdapter.setMusicClips(allSoundClips)
+            return false
+        }
+
+        val fClips = filterClips(query)
+        if (fClips.size > 0) {
+            recyclerAdapter.setMusicClips(fClips)
+        }
+        return true
     }
 }
